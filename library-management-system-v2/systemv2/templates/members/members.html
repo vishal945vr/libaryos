@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Members - Library Management</div>
+{% endblock %}
+
+{% block content %}
+<div class="inner-page">
+<div class="page-header">
+    <h1>👥 Members</h1>
+    <a href="/members/add" class="btn btn-success">➕ Add New Member</a>
+</div>
+
+<div class="table-container">
+    {% if members %}
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Join Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+            <tr>
+                <td>{{ member['id'] }}</td>
+                <td>{{ member['name'] }}</td>
+                <td>{{ member['email'] }}</td>
+                <td>{{ member['phone'] or '-' }}</td>
+                <td>{{ member['address'] or '-' }}</td>
+                <td>{{ member['membership_date'] }}</td>
+                <td>
+                    <span class="badge {% if member['status'] == 'active' %}badge-success{% else %}badge-danger{% endif %}">
+                        {{ member['status'] }}
+                    </span>
+                </td>
+                <td>
+                    <a href="/members/edit/{{ member['id'] }}" class="btn btn-sm btn-warning">✏️ Edit</a>
+                    <a href="/members/delete/{{ member['id'] }}" class="btn btn-sm btn-danger"
+                       onclick="return confirm('Delete this member?')">🗑️ Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+        <p>No members found. <a href="/members/add">Add your first member</a>.</p>
+    </div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

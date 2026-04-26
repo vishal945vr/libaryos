@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Books - Library Management</div>
+{% endblock %}
+
+{% block content %}
+<div class="inner-page">
+<div class="page-header">
+    <h1>📖 Books</h1>
+    <a href="/books/add" class="btn btn-success">➕ Add New Book</a>
+</div>
+
+<div class="table-container">
+    {% if books %}
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Genre</th>
+                <th>Quantity</th>
+                <th>Available</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book['id'] }}</td>
+                <td>{{ book['title'] }}</td>
+                <td>{{ book['author'] }}</td>
+                <td>{{ book['isbn'] }}</td>
+                <td>{{ book['genre'] or '-' }}</td>
+                <td>{{ book['quantity'] }}</td>
+                <td>
+                    <span class="badge {% if book['available'] > 0 %}badge-success{% else %}badge-danger{% endif %}">
+                        {{ book['available'] }}
+                    </span>
+                </td>
+                <td>
+                    <a href="/books/edit/{{ book['id'] }}" class="btn btn-sm btn-warning">✏️ Edit</a>
+                    <a href="/books/delete/{{ book['id'] }}" class="btn btn-sm btn-danger"
+                       onclick="return confirm('Delete this book?')">🗑️ Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+        <p>No books found. <a href="/books/add">Add your first book</a>.</p>
+    </div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

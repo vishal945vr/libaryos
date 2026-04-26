@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% block title %}LibraryOS — Home{% endblock %}
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="badge-dot"></span>
+            Next-Gen Library Management
+        </div>
+        <h1 class="hero-title">
+            Manage Your Library
+            <span class="title-highlight">Effortlessly.</span>
+        </h1>
+        <p class="hero-sub">
+            A powerful, modern system for books, members & transactions —
+            all in one elegant dashboard.
+        </p>
+        <div class="hero-cta">
+            <a href="/books/" class="btn-hero-primary">Browse Books</a>
+            <a href="/statistics" class="btn-hero-ghost">View Stats →</a>
+        </div>
+    </div>
+
+    <!-- FLOATING CARDS -->
+    <div class="hero-cards">
+        <div class="float-card fc-1" style="animation-delay:0s">
+            <span class="fc-icon">📚</span>
+            <div class="fc-info">
+                <span class="fc-label">Total Books</span>
+                <span class="fc-val" data-count="240">0</span>
+            </div>
+        </div>
+        <div class="float-card fc-2" style="animation-delay:0.3s">
+            <span class="fc-icon">👥</span>
+            <div class="fc-info">
+                <span class="fc-label">Members</span>
+                <span class="fc-val" data-count="85">0</span>
+            </div>
+        </div>
+        <div class="float-card fc-3" style="animation-delay:0.6s">
+            <span class="fc-icon">📋</span>
+            <div class="fc-info">
+                <span class="fc-label">Issued Today</span>
+                <span class="fc-val" data-count="12">0</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div class="marquee-wrap">
+    <div class="marquee-track">
+        <span>📚 Book Management</span><span class="sep">◆</span>
+        <span>👥 Member Profiles</span><span class="sep">◆</span>
+        <span>📋 Issue & Return</span><span class="sep">◆</span>
+        <span>📊 Live Statistics</span><span class="sep">◆</span>
+        <span>🔍 Smart Search</span><span class="sep">◆</span>
+        <span>🌙 Dark Mode</span><span class="sep">◆</span>
+        <span>📚 Book Management</span><span class="sep">◆</span>
+        <span>👥 Member Profiles</span><span class="sep">◆</span>
+        <span>📋 Issue & Return</span><span class="sep">◆</span>
+        <span>📊 Live Statistics</span><span class="sep">◆</span>
+        <span>🔍 Smart Search</span><span class="sep">◆</span>
+        <span>🌙 Dark Mode</span><span class="sep">◆</span>
+    </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features-section">
+    <div class="section-header">
+        <p class="section-tag">Everything You Need</p>
+        <h2 class="section-title">Built for Modern Libraries</h2>
+    </div>
+
+    <div class="features-grid">
+        <a href="/books/" class="feat-card" style="--delay:0.0s">
+            <div class="feat-icon-wrap">
+                <span class="feat-icon">📖</span>
+            </div>
+            <div class="feat-body">
+                <h3>Book Catalog</h3>
+                <p>Add, edit, and organize your entire book collection with full CRUD operations and availability tracking.</p>
+            </div>
+            <span class="feat-arrow">→</span>
+        </a>
+
+        <a href="/members/" class="feat-card" style="--delay:0.1s">
+            <div class="feat-icon-wrap">
+                <span class="feat-icon">👤</span>
+            </div>
+            <div class="feat-body">
+                <h3>Member Registry</h3>
+                <p>Manage library members with status control, contact info, and full membership history.</p>
+            </div>
+            <span class="feat-arrow">→</span>
+        </a>
+
+        <a href="/transactions/" class="feat-card" style="--delay:0.2s">
+            <div class="feat-icon-wrap">
+                <span class="feat-icon">🔄</span>
+            </div>
+            <div class="feat-body">
+                <h3>Transactions</h3>
+                <p>Track every book issue and return with due dates, overdue alerts, and full audit history.</p>
+            </div>
+            <span class="feat-arrow">→</span>
+        </a>
+
+        <a href="/statistics" class="feat-card" style="--delay:0.3s">
+            <div class="feat-icon-wrap">
+                <span class="feat-icon">📊</span>
+            </div>
+            <div class="feat-body">
+                <h3>Live Dashboard</h3>
+                <p>Real-time statistics on books, members, issued copies, and overdue items at a glance.</p>
+            </div>
+            <span class="feat-arrow">→</span>
+        </a>
+
+        <a href="/search_books" class="feat-card" style="--delay:0.4s">
+            <div class="feat-icon-wrap">
+                <span class="feat-icon">🔍</span>
+            </div>
+            <div class="feat-body">
+                <h3>Smart Search</h3>
+                <p>Instantly find books by title, author, or ISBN with lightning-fast search results.</p>
+            </div>
+            <span class="feat-arrow">→</span>
+        </a>
+
+        <a href="/transactions/issue" class="feat-card feat-card-accent" style="--delay:0.5s">
+            <div class="feat-icon-wrap">
+                <span class="feat-icon">📤</span>
+            </div>
+            <div class="feat-body">
+                <h3>Quick Issue</h3>
+                <p>Issue books to members in seconds. Set custom loan durations and auto-track due dates.</p>
+            </div>
+            <span class="feat-arrow">→</span>
+        </a>
+    </div>
+</section>
+
+<!-- QUICK ACTIONS -->
+<section class="quick-section">
+    <div class="section-header">
+        <p class="section-tag">Quick Actions</p>
+        <h2 class="section-title">Jump Right In</h2>
+    </div>
+    <div class="quick-grid">
+        <a href="/books/add" class="quick-btn">+ Add Book</a>
+        <a href="/members/add" class="quick-btn">+ Add Member</a>
+        <a href="/transactions/issue" class="quick-btn quick-btn-primary">📤 Issue Book</a>
+        <a href="/statistics" class="quick-btn">📊 View Stats</a>
+    </div>
+</section>
+
+{% endblock %}

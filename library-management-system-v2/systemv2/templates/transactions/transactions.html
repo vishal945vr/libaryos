@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Transactions - Library Management</div>
+{% endblock %}
+
+{% block content %}
+<div class="inner-page">
+<div class="page-header">
+    <h1>📋 Transactions</h1>
+    <a href="/transactions/issue" class="btn btn-success">📤 Issue New Book</a>
+</div>
+
+<div class="table-container">
+    {% if transactions %}
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Book</th>
+                <th>Member</th>
+                <th>Issue Date</th>
+                <th>Due Date</th>
+                <th>Return Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trans in transactions %}
+            <tr>
+                <td>{{ trans['id'] }}</td>
+                <td>{{ trans['book_title'] }}</td>
+                <td>{{ trans['member_name'] }}</td>
+                <td>{{ trans['issue_date'] }}</td>
+                <td>{{ trans['due_date'] }}</td>
+                <td>{{ trans['return_date'] or '—' }}</td>
+                <td>
+                    {% if trans['status'] == 'issued' %}
+                        <span class="badge badge-warning">Issued</span>
+                    {% else %}
+                        <span class="badge badge-success">Returned</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if trans['status'] == 'issued' %}
+                    <a href="/transactions/return/{{ trans['id'] }}" class="btn btn-sm btn-success"
+                       onclick="return confirm('Mark this book as returned?')">📥 Return</a>
+                    {% else %}
+                    <span class="text-muted">✅ Done</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+        <p>No transactions yet. <a href="/transactions/issue">Issue a book</a> to get started.</p>
+    </div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

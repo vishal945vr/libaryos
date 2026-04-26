@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Statistics — LibraryOS{% endblock %}
+{% block content %}
+<div class="inner-page">
+<div class="page-header">
+    <h1>📊 Library Statistics</h1>
+</div>
+<div class="stats-grid">
+    <div class="stat-card blue"   style="--i:0"><h2>{{ total_books }}</h2><p>📚 Total Books</p></div>
+    <div class="stat-card green"  style="--i:1"><h2>{{ available_books }}</h2><p>✅ Available</p></div>
+    <div class="stat-card purple" style="--i:2"><h2>{{ total_members }}</h2><p>👥 Total Members</p></div>
+    <div class="stat-card teal"   style="--i:3"><h2>{{ active_members }}</h2><p>🟢 Active Members</p></div>
+    <div class="stat-card orange" style="--i:4"><h2>{{ total_transactions }}</h2><p>📋 Transactions</p></div>
+    <div class="stat-card yellow" style="--i:5"><h2>{{ issued_books }}</h2><p>📤 Currently Issued</p></div>
+    <div class="stat-card red"    style="--i:6"><h2>{{ overdue_books }}</h2><p>⚠️ Overdue</p></div>
+</div>
+</div>
+{% endblock %}

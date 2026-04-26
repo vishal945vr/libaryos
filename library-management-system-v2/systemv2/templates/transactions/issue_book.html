@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Issue Book - Library Management</div>
+{% endblock %}
+
+{% block content %}
+<div class="inner-page">
+<div class="form-container">
+    <h1>📤 Issue Book</h1>
+    <form method="POST" class="form">
+        <div class="form-group">
+            <label>Select Book *</label>
+            <select name="book_id" required>
+                <option value="">-- Select an Available Book --</option>
+                {% for book in books %}
+                <option value="{{ book['id'] }}">
+                    {{ book['title'] }} — {{ book['author'] }} (Available: {{ book['available'] }})
+                </option>
+                {% endfor %}
+            </select>
+            {% if not books %}
+            <small class="form-hint">No books are currently available.</small>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label>Select Member *</label>
+            <select name="member_id" required>
+                <option value="">-- Select an Active Member --</option>
+                {% for member in members %}
+                <option value="{{ member['id'] }}">{{ member['name'] }} ({{ member['email'] }})</option>
+                {% endfor %}
+            </select>
+            {% if not members %}
+            <small class="form-hint">No active members found.</small>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label>Loan Duration (days) *</label>
+            <input type="number" name="due_days" value="14" min="1" max="90" required>
+        </div>
+        <div class="form-actions">
+            <a href="/transactions/" class="btn btn-secondary">← Back</a>
+            <button type="submit" class="btn btn-primary" {% if not books or not members %}disabled{% endif %}>
+                Issue Book
+            </button>
+        </div>
+    </form>
+</div>
+</div>
+{% endblock %}

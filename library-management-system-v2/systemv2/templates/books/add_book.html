@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Book - Library Management</div>
+{% endblock %}
+
+{% block content %}
+<div class="inner-page">
+<div class="form-container">
+    <h1>➕ Add New Book</h1>
+    <form method="POST" class="form">
+        <div class="form-group">
+            <label>Book Title *</label>
+            <input type="text" name="title" required placeholder="Enter book title">
+        </div>
+        <div class="form-group">
+            <label>Author *</label>
+            <input type="text" name="author" required placeholder="Enter author name">
+        </div>
+        <div class="form-group">
+            <label>ISBN *</label>
+            <input type="text" name="isbn" required placeholder="e.g. 978-0-061-96436-9">
+        </div>
+        <div class="form-group">
+            <label>Genre</label>
+            <input type="text" name="genre" placeholder="e.g. Fiction, Science, History">
+        </div>
+        <div class="form-group">
+            <label>Quantity *</label>
+            <input type="number" name="quantity" min="1" value="1" required>
+        </div>
+        <div class="form-actions">
+            <a href="/books/" class="btn btn-secondary">← Back</a>
+            <button type="submit" class="btn btn-primary">Add Book</button>
+        </div>
+    </form>
+</div>
+</div>
+{% endblock %}

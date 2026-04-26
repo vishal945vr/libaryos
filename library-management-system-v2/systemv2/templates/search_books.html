@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Books - Library Management</div>
+{% endblock %}
+
+{% block content %}
+<div class="inner-page">
+<div class="page-header">
+    <h1>🔍 Search Books</h1>
+</div>
+
+<div class="form-container">
+    <form method="POST" class="search-form">
+        <div class="search-row">
+            <input type="text" name="search" placeholder="Search by title, author, or ISBN..." value="{{ search }}" class="search-input">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+</div>
+
+<div class="results-container">
+    {% if books %}
+        <p class="results-count">Found {{ books|length }} result(s) for "{{ search }}"</p>
+        {% for book in books %}
+        <div class="book-result">
+            <h3>{{ book['title'] }}</h3>
+            <p><strong>Author:</strong> {{ book['author'] }}</p>
+            <p><strong>ISBN:</strong> {{ book['isbn'] }}</p>
+            <p><strong>Genre:</strong> {{ book['genre'] }}</p>
+            <p><strong>Available:</strong>
+                <span class="badge {% if book['available'] > 0 %}badge-success{% else %}badge-danger{% endif %}">
+                    {{ book['available'] }} / {{ book['quantity'] }}
+                </span>
+            </p>
+        </div>
+        {% endfor %}
+    {% elif search %}
+        <div class="empty-state">
+            <p>No books found for "{{ search }}". Try a different search term.</p>
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <p>Enter a search term above to find books.</p>
+        </div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
